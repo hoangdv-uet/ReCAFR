@@ -134,7 +134,7 @@ class SSL(AbstractRecommender):
         # Hyper-parameters for SSL
         # Hyper-parameters for SSL
         self.ssl_aug_type = config["aug_type"].lower()
-        assert self.ssl_aug_type in ['nd','ed', 'rw']
+        assert self.ssl_aug_type in ['nd']
         self.ssl_reg = config["ssl_reg"]
         self.ssl_ratio = config["ssl_ratio"]
         self.ssl_mode = config["ssl_mode"]
@@ -232,7 +232,7 @@ class SSL(AbstractRecommender):
                 bat_users = torch.from_numpy(bat_users).long().to(self.device)
                 bat_pos_items = torch.from_numpy(bat_pos_items).long().to(self.device)
                 bat_neg_items = torch.from_numpy(bat_neg_items).long().to(self.device)
-                
+
                 
                 sup_logits, ssl_logits_user, ssl_logits_item = self.lightgcn(sub_graph1, sub_graph2, bat_users, bat_pos_items, bat_neg_items)
                 #user_embeddings, user_embeddings =   self.lightgcn(sub_graph1)
@@ -246,8 +246,12 @@ class SSL(AbstractRecommender):
                     self.lightgcn.item_embeddings(bat_pos_items),
                     self.lightgcn.item_embeddings(bat_neg_items),
                 )
+                # InfoNCE Loss (review)
+                clogits_user = torch.logsumexp(ssl_logits_user / self.ssl_temp, dim=1)
+                clogits_item = torch.logsumexp(ssl_logits_item / self.ssl_temp, dim=1)
+                infonce_loss = torch.sum(clogits_user + clogits_item)
                 
-                loss = bpr_loss + self.reg * reg_loss #+ self.ssl_reg * infonce_loss 
+                loss = bpr_loss + self.reg * reg_loss + self.ssl_reg * infonce_loss 
                 total_loss += loss
                 total_bpr_loss += bpr_loss
                 total_reg_loss += self.reg * reg_loss
