@@ -10,7 +10,7 @@ python local_compile_setup.py build_ext --inplace
 If the compilation is successful, the evaluator of cpp implementation will be called automatically.
 Otherwise, the evaluator of python implementation will be called.
 
-**1.**, Download review data from the link given in the openreview comments.(Due to the limitation of the anonymous hub, links cannot be displayed here.)
+**1.** Download review data from the link given in the openreview comments.(Due to the limitation of the anonymous hub, links cannot be displayed here.)
 
 **2.** Run preprocessing.py file to create review feature
 
