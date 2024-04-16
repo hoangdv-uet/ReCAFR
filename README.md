@@ -1,7 +1,7 @@
 
 
 ## Quick Start
-**1.**, compline the evaluator of cpp implementation with the following command line:
+**1.** compline the evaluator of cpp implementation with the following command line:
 
 ```bash
 python local_compile_setup.py build_ext --inplace
