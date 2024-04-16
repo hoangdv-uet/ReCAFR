@@ -14,4 +14,5 @@ Otherwise, the evaluator of python implementation will be called.
 **2.** Run preprocessing.py file to create review feature
 
 **3.** Run [main.py](./main.py) in IDE hyperparameters are in configuration file 
+
 **4.** You may check or update the hyperparameters in the configuration file *./conf/SSL.ini*.
