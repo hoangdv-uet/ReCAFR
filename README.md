@@ -1,4 +1,4 @@
-First download review dataset via this link https://nijianmo.github.io/amazon. Then Run preprocessing.py file to create review feature
+First download review dataset via this link https://cseweb.ucsd.edu/~jmcauley/datasets/amazon_v2/. Then Run preprocessing.py file to create review feature
 
 
 # Quick Start
