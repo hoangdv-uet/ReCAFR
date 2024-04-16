@@ -12,6 +12,6 @@ Otherwise, the evaluator of python implementation will be called.
 
 **Then**, download review dataset via this link https://cseweb.ucsd.edu/~jmcauley/datasets/amazon_v2/. Run preprocessing.py file to create review feature
 
-Model specific hyperparameters are in configuration file *./conf/SSL.ini*.
+**Model specific** hyperparameters are in configuration file *./conf/SSL.ini*.
 
 **Finally**, run [main.py](./main.py) in IDE
