@@ -1,8 +1,3 @@
-__author__ = "Zhongchuan Sun"
-__email__ = "zhongchuansun@gmail.com"
-
-__all__ = ["AbstractRecommender"]
-
 from reckit import Logger
 from reckit import Configurator
 from reckit import Evaluator
